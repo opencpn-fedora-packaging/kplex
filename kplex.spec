@@ -1,7 +1,7 @@
 Name: kplex
 Summary: A multiplexer for various NMEA-0183 interfaces
 Version: 1.3.4
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPLv3+
 Source0: http://www.stripydog.com/download/kplex-%{version}.tgz
 Source1: kplex.service
@@ -30,10 +30,10 @@ cp -a kplex.conf.ex %{buildroot}%{_sysconfdir}/kplex.conf
 cp %{SOURCE1} %{buildroot}%{_unitdir}/kplex.service
 
 %pre
-getent group kplex >/dev/null || groupadd -r GROUPNAME
+getent group kplex >/dev/null || groupadd -r kplex
 getent passwd kplex >/dev/null || \
-    useradd -r -g kplex -d  -s /sbin/nologin \
-	    -c "NMEA-0183 multiplexer" kplex
+    useradd -r -g kplex -d /tmp -s /sbin/nologin \
+	    -c "NMEA-0183 Multiplexer" kplex
 usermod -a -G dialout kplex
 exit 0
 
