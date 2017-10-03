@@ -1,0 +1,13 @@
+[Unit]
+Description=NMEA-0183 Multiplexer
+Documentation=http://www.stripydog.com/kplex/
+
+[Service]
+User=kplex
+
+ExecStart=/usr/bin/kplex
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
